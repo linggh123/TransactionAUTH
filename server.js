@@ -11,6 +11,7 @@ const addInventoryRoute = require('./routes/inventory/addInventory')
 const getInventoryRoute = require('./routes/inventory/getInventory')
 const addGoodsRoute = require('./routes/goods/addGoods')
 const getGoodsRoute = require('./routes/goods/getGoods')
+const addTransactionRoute = require('./routes/transaction/addTransaction')
 const getTransactionRoute = require('./routes/transaction/getTransaction')
 
 const app = express()
@@ -26,6 +27,7 @@ app.use(addInventoryRoute)
 app.use(getInventoryRoute)
 app.use(addGoodsRoute)
 app.use(getGoodsRoute)
+app.use(addTransactionRoute)
 app.use(getTransactionRoute)
 
 const port = 3011

@@ -2,6 +2,7 @@ const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
 const goodsModel = require('../model/goodsModel')
 const inventoriesModel = require('../model/inventoriesModel')
+const transactionModel = require('../model/transactionsModel')
 const storesModel = require('../model/storesModel')
 const usersModel = require('../model/usersModel')
 
@@ -25,7 +26,8 @@ let db;
             stores: [],
             inventories: [],
             goods: [],
-            users: []
+            users: [],
+            transactions: []
         })
             .write()
     } catch (error) {
@@ -55,6 +57,7 @@ function shapeObject(input, model) {
  * @returns {Object} data
  */
 function get(tableName, query) {
+    console.log(query)
     if (query && Object.keys(query).length) {
         return db
             .get(tableName)
@@ -87,10 +90,14 @@ function add(tableName, body) {
     if (tableName == 'users') {
         shapedBody = shapeObject(body, usersModel)
     }
+    if (tableName == 'transactions') {
+        shapedBody = shapeObject(body, transactionModel)
+    }
 
     if (!shapedBody) {
         return false
     }
+    console.log(shapedBody, tableName)
     return db.get(tableName)
         .push(shapedBody)
         .write()
