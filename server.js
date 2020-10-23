@@ -13,6 +13,8 @@ const addGoodsRoute = require('./routes/goods/addGoods')
 const getGoodsRoute = require('./routes/goods/getGoods')
 const addTransactionRoute = require('./routes/transaction/addTransaction')
 const getTransactionRoute = require('./routes/transaction/getTransaction')
+const editTransactionRoute = require('./routes/transaction/editTransaction')
+const deleteTransactionRoute = require('./routes/transaction/editTransaction')
 
 const app = express()
 app.use(bodyParser.json())
@@ -29,6 +31,8 @@ app.use(addGoodsRoute)
 app.use(getGoodsRoute)
 app.use(addTransactionRoute)
 app.use(getTransactionRoute)
+app.use(editTransactionRoute)
+app.use(deleteTransactionRoute)
 
 const port = 3011
 app.listen(port, () => {
